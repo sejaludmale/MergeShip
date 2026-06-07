@@ -1,19 +1,27 @@
-/* Fonts are loaded via next/font/google in layout.tsx — no @import needed */
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* =========================
+   YOUR CUSTOM THEME
+========================= */
 
 :root {
   --bg-primary: #060611;
   --bg-secondary: #0D0D1A;
   --bg-card: #12122B;
   --bg-card-hover: #1A1A35;
+
   --border-subtle: rgba(255, 255, 255, 0.06);
   --border-active: rgba(124, 58, 237, 0.5);
+
   --text-primary: #F8F8FF;
   --text-secondary: #A0A0C0;
   --text-muted: #606080;
+
   --purple: #7C3AED;
   --purple-light: #A78BFA;
   --cyan: #06B6D4;
@@ -46,211 +54,97 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
-}
-::-webkit-scrollbar-thumb {
-  background: #3D3D70;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--purple);
+/* =========================
+   SHADCN REQUIRED FIX
+   (IMPORTANT PART)
+========================= */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
+  * {
+    @apply outline-none;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
-/* Glass morphism card */
+/* =========================
+   KEEP YOUR CUSTOM STYLES
+========================= */
+
 .glass-card {
   background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(6,182,212,0.04) 100%);
   border: 1px solid rgba(255,255,255,0.06);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 }
 
 .glass-card:hover {
   border-color: rgba(124,58,237,0.3);
-  background: linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(6,182,212,0.06) 100%);
 }
 
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, #A78BFA 0%, #06B6D4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+::-webkit-scrollbar {
+  width: 6px;
 }
 
-.gradient-text-pink {
-  background: linear-gradient(135deg, #EC4899 0%, #A78BFA 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+::-webkit-scrollbar-thumb {
+  background: #3D3D70;
 }
-
-/* Glow effects */
-.glow-purple {
-  box-shadow: 0 0 20px rgba(124,58,237,0.4), 0 0 40px rgba(124,58,237,0.15);
-}
-
-.glow-cyan {
-  box-shadow: 0 0 20px rgba(6,182,212,0.4), 0 0 40px rgba(6,182,212,0.15);
-}
-
-/* Purple button */
-.btn-primary {
-  background: linear-gradient(135deg, #7C3AED, #5B21B6);
-  border: 1px solid rgba(167,139,250,0.3);
-  color: white;
-  font-family: var(--font-outfit), 'Outfit', sans-serif;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-.btn-primary:hover {
-  background: linear-gradient(135deg, #8B4CF6, #6D28D9);
-  box-shadow: 0 0 20px rgba(124,58,237,0.5);
-  transform: translateY(-1px);
-}
-
-.btn-secondary {
-  background: rgba(124,58,237,0.12);
-  border: 1px solid rgba(124,58,237,0.3);
-  color: #A78BFA;
-  font-family: var(--font-outfit), 'Outfit', sans-serif;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.btn-secondary:hover {
-  background: rgba(124,58,237,0.2);
-  border-color: rgba(124,58,237,0.5);
-}
-
-/* Badge styles */
-.badge-easy {
-  background: rgba(16,185,129,0.15);
-  color: #34D399;
-  border: 1px solid rgba(16,185,129,0.3);
-}
-
-.badge-medium {
-  background: rgba(245,158,11,0.15);
-  color: #FCD34D;
-  border: 1px solid rgba(245,158,11,0.3);
-}
-
-.badge-hard {
-  background: rgba(239,68,68,0.15);
-  color: #FCA5A5;
-  border: 1px solid rgba(239,68,68,0.3);
-}
-
-.badge-expert {
-  background: rgba(124,58,237,0.2);
-  color: #C4B5FD;
-  border: 1px solid rgba(124,58,237,0.4);
-}
-
-/* Level badge */
-.level-badge {
-  background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(6,182,212,0.2));
-  border: 1px solid rgba(167,139,250,0.4);
-  font-family: 'Outfit', sans-serif;
-  font-weight: 700;
-}
-
-/* XP progress bar */
-.xp-bar {
-  background: rgba(255,255,255,0.06);
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.xp-bar-fill {
-  background: linear-gradient(90deg, #7C3AED, #06B6D4);
-  border-radius: 999px;
-  transition: width 1s ease-out;
-  position: relative;
-  overflow: hidden;
-}
-
-.xp-bar-fill::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-  animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-  to { left: 100%; }
-}
-
-/* Sidebar active indicator */
-.nav-active {
-  background: linear-gradient(90deg, rgba(124,58,237,0.2), rgba(124,58,237,0.05));
-  border-left: 3px solid #7C3AED;
-  color: #A78BFA;
-}
-
-/* Stats number */
-.stat-number {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 800;
-  background: linear-gradient(135deg, #F8F8FF, #A78BFA);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Achievement card */
-.achievement-locked {
-  filter: grayscale(0.8);
-  opacity: 0.5;
-}
-
-/* Hero gradient bg */
-.hero-bg {
-  background: radial-gradient(ellipse at 50% -20%, rgba(124,58,237,0.35) 0%, transparent 65%),
-              radial-gradient(ellipse at 90% 50%, rgba(6,182,212,0.15) 0%, transparent 50%),
-              radial-gradient(ellipse at 10% 80%, rgba(236,72,153,0.1) 0%, transparent 50%);
-}
-
-/* Animated grid background */
-.grid-bg {
-  background-image: 
-    linear-gradient(rgba(124,58,237,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(124,58,237,0.05) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-/* Status dot */
-.status-online { background: #10B981; box-shadow: 0 0 6px rgba(16,185,129,0.6); }
-.status-busy { background: #F59E0B; box-shadow: 0 0 6px rgba(245,158,11,0.6); }
-.status-away { background: #6B7280; }
-
-/* Priority badge */
-.priority-critical { color: #FCA5A5; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); }
-.priority-high { color: #FCD34D; background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); }
-.priority-medium { color: #67E8F9; background: rgba(6,182,212,0.15); border: 1px solid rgba(6,182,212,0.3); }
-.priority-low { color: #A7F3D0; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); }
-
-/* Transition helpers */
-.transition-card {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.transition-card:hover {
-  transform: translateY(-3px);
-}
-html[data-ms-theme="light"] { filter: invert(1) hue-rotate(180deg); }
-html[data-ms-theme="light"] img,
-html[data-ms-theme="light"] video,
-html[data-ms-theme="light"] [class*="bg-green"],
-html[data-ms-theme="light"] [class*="bg-134e2a"] { filter: invert(1) hue-rotate(180deg); }
