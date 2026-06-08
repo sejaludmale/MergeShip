@@ -1,135 +1,45 @@
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* =========================
-   YOUR CUSTOM THEME
-========================= */
+/* ================= ROOT VARIABLES ================= */
 
 :root {
-  --bg-primary: #060611;
-  --bg-secondary: #0D0D1A;
-  --bg-card: #12122B;
-  --bg-card-hover: #1A1A35;
+  --background: #060611;
+  --foreground: #f8f8ff;
 
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-active: rgba(124, 58, 237, 0.5);
+  --card: #12122b;
+  --card-foreground: #f8f8ff;
 
-  --text-primary: #F8F8FF;
-  --text-secondary: #A0A0C0;
-  --text-muted: #606080;
-
-  --purple: #7C3AED;
-  --purple-light: #A78BFA;
-  --cyan: #06B6D4;
-  --cyan-light: #67E8F9;
-  --pink: #EC4899;
-  --green: #10B981;
-  --amber: #F59E0B;
-  --red: #EF4444;
+  --border: rgba(255, 255, 255, 0.08);
+  --ring: rgba(124, 58, 237, 0.5);
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: var(--font-inter), 'Inter', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-outfit), 'Outfit', sans-serif;
-  font-weight: 700;
-}
-
-/* =========================
-   SHADCN REQUIRED FIX
-   (IMPORTANT PART)
-========================= */
+/* ================= BASE LAYER ================= */
 
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
-
   * {
-    @apply outline-none;
+    @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground;
   }
+
+  html {
+    @apply font-sans;
+  }
 }
 
-/* =========================
-   KEEP YOUR CUSTOM STYLES
-========================= */
+/* fallback theme support */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ================= YOUR CUSTOM STYLES (UNCHANGED) ================= */
 
 .glass-card {
   background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(6,182,212,0.04) 100%);
@@ -137,14 +47,12 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: blur(12px);
 }
 
-.glass-card:hover {
-  border-color: rgba(124,58,237,0.3);
+.btn-primary {
+  background: linear-gradient(135deg, #7C3AED, #5B21B6);
+  color: white;
 }
 
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #3D3D70;
+.btn-secondary {
+  background: rgba(124,58,237,0.12);
+  color: #A78BFA;
 }

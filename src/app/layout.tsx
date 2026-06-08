@@ -79,6 +79,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`dark ${outfit.variable} ${inter.variable} ${dmSerifDisplay.variable} ${dmMono.variable} ${dmSans.variable}`}
     >
       <body className="bg-dark-900 text-white antialiased">

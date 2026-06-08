@@ -411,19 +411,11 @@ function Hero() {
           </FadeUp>
           <FadeUp className="hero-ctas" delay={1.1} y={24}>
             <Link
-              href="/dashboard"
-              className="btn"
-              onClick={(e) => {
-                const isLoggedIn = false;
-                if (!isLoggedIn) {
-                  e.preventDefault();
-                  alert("Please sign in first to continue.");
-                  window.location.href = "/signin";
-                }
-              }}
-            >
-              Start Contributing →
-            </Link>
+  href="/dashboard"
+  className="btn"
+>
+  Start Contributing →
+</Link>
             <a href="#features" className="btn-ghost">see how it works →</a>
           </FadeUp>
         </div>
